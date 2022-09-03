@@ -3,20 +3,20 @@ import RedirectInfo from "../Redirect/RedirectInfo.component";
 import { useNavigate } from "react-router";
 import { Tooltip } from "@mui/material";
 
-const LoginFooter = ({ handleLogin, isFormValid }) => {
+const RegisterFooter = ({ handleRegister, isFormValid }) => {
 
     const getFormNotValidMessage = () => {
-        return "Please enter correct email and password"
+        return "Please enter email, username and password"
     }
 
     const getFormValidMessage = () => {
-        return "Press to Login"
+        return "Press to Register"
     }
 
     const navigate = useNavigate()
 
-    const handlePushToRegisterPage = () => {
-        navigate("/register")
+    const handlePushToLoginPage = () => {
+        navigate("/login")
     }
 
     return (
@@ -26,20 +26,20 @@ const LoginFooter = ({ handleLogin, isFormValid }) => {
         >
         <div>
             <CustomButton 
-              label="Login"
+              label="Register"
               additionalStyles={{ marginTop: "30px" }}
               disabled={!isFormValid}
-              onClick={handleLogin}
+              onClick={handleRegister}
             />
         </div>
         </Tooltip>
         <RedirectInfo 
-          text="Need an account ? "
-          redirectText="Create an account"
+          text="Already have an account ? "
+          redirectText="Go to login page"
           additionalStyles={{ marginTop: "5px" }}
-          redirectHandler={handlePushToRegisterPage}
+          redirectHandler={handlePushToLoginPage}
         />
         </>
     )
 }
-export default LoginFooter;
+export default RegisterFooter;
