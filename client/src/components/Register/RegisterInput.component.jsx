@@ -1,4 +1,3 @@
-import { useState } from "react";
 import InputWithLabel from "../InputWithLabel/InputWithLabel.component";
 
 const RegisterInput = ({ mail, setMail, password, setPassword, username, setUsername }) => {
