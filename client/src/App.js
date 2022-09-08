@@ -11,7 +11,6 @@ function App() {
        <Routes>
            <Route path={"/login"} exact={true} element={<Login />} />
           <Route path={"/register"} exact={true} element={<Register />} />
-          <Route path={"/dashboard"} exact={true} element={<Dashboard />} />
           <Route path={"/dashboard"} exact={true} element={<PrivateRoute><Dashboard /></PrivateRoute>} /> 
        </Routes>
     </div>

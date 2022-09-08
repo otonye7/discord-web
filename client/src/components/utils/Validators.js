@@ -12,7 +12,7 @@ const validatePassword = (password) => {
     return password.length > 0
 }
 
-const validateMail = (mail) => {
+export const validateMail = (mail) => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(mail)
 }
