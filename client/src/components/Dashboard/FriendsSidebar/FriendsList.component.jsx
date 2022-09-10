@@ -29,7 +29,7 @@ const FriendsList = () => {
         <MainContainer>
             {DUMMY_FRIENDS.map((f) => (
                 <FriendsListItem 
-                key={f._id} 
+                key={f.id} 
                 id={f.id}
                 userName={f.userName}
                 isOnline={f.isOnline}
