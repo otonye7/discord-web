@@ -5,10 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./redux/userSlice";
+import friendsReducer from "./redux/friendsSlice";
 
 const store = configureStore({
   reducer: {
-    user: userReducer
+    user: userReducer,
+    friends: friendsReducer
   }
 })
 

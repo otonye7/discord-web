@@ -1,16 +1,29 @@
 import { Dialog, DialogTitle, Typography, DialogActions, DialogContent, DialogContentText } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import { validateMail } from "../../utils/Validators";
 import InputWithLabel from "../../InputWithLabel/InputWithLabel.component";
 import CustomButton from "../../button/button.component";
+import { friends } from "../../../redux/friendsSlice";
 
 
-const AddFriendDialog = ({ isDialogOpen, closeDialogHandler, sendFriendIvitation = () => {} }) => {
+const AddFriendDialog = ({ isDialogOpen, closeDialogHandler }) => {
     const [mail, setMail] = useState("");
     const [isFormValid, setIsFormValid] = useState("");
+    const dispatch = useDispatch();
  
-    const handleSendFriendInvitation = () => {
-
+    const handleSendFriendInvitation = async () => {
+        try {
+            let res = await axios.post(`http://localhost:7000/api/friend-invitation/invite`, {
+                mail
+            })
+            if(res.data){
+                console.log(res.data)
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     const handleCloseDialog = () => {
