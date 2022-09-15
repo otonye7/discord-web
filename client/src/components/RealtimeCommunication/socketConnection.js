@@ -1,8 +1,9 @@
 import io from "socket.io-client";
-
+import storeRef from "../../index"
+import { pendingFriends } from "../../redux/friendsSlice";
 let socket = null;
-
-export const connectWithSocketServer = (userDetails) => {
+// console.log(storeRef)
+ const connectWithSocketServer = (userDetails) => {
     const jwtToken = userDetails.userDetails.token
     socket = io("http://localhost:7000", {
         auth: {
@@ -14,4 +15,12 @@ export const connectWithSocketServer = (userDetails) => {
         console.log("Successfully connected to socket io server");
         console.log(socket.id)
     })
+
+    socket.on("friends-invitations", (data) => {
+        storeRef.dispatch(pendingFriends({
+            data: data
+        }))
+    })
+
 }
+export default connectWithSocketServer

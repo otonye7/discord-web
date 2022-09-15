@@ -4,7 +4,7 @@ import SideBar from "./Sidebar/Sidebar.component";
 import FriendsSideBar from "./FriendsSidebar/FriendsSidebar.component";
 import Messenger from "./Messenger/Messenger.component";
 import AppBar from "./AppBar/AppBar.component";
-import { connectWithSocketServer } from "../RealtimeCommunication/socketConnection";
+import connectWithSocketServer from "../RealtimeCommunication/socketConnection";
 
 const Wrapper = styled("div")({
     width: "100%",

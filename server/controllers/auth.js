@@ -3,7 +3,6 @@ const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 
 const postRegister = async (req, res) => {
-    console.log(req)
         const { mail, username, password } = req.body;
         let existingUser = await User.findOne({ mail: mail.toLowerCase() }).exec();
         if(existingUser){

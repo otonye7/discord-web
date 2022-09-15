@@ -5,14 +5,16 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./redux/userSlice";
-import friendsReducer from "./redux/friendsSlice";
+import pendingFriendsReducer from "./redux/friendsSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
-    friends: friendsReducer
+    pendingFriends: pendingFriendsReducer
   }
 })
+
+let storeRef = store;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -22,3 +24,5 @@ root.render(
   </BrowserRouter>
   </Provider>
 );
+
+export default storeRef

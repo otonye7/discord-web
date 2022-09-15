@@ -1,4 +1,5 @@
 import { styled } from "@mui/system";
+import {  useSelector } from "react-redux";
 import PendingInvitationListItem from "./PendingInvitationListItem.component";
 
 const DUMMY_INVITATIONS = [
@@ -35,6 +36,7 @@ const MainContainer = styled("div")({
 })
 
 const PendingInvitationList = () => {
+    const pendingFriends = useSelector((state) => console.log(state))
     return (
         <MainContainer>
             {DUMMY_INVITATIONS.map((invitation) => (
