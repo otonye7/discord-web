@@ -2,7 +2,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Box, IconButton } from "@mui/material";
 
-const InvitationDecisionButtons = ({ disabled, acceptInvitationHandler, rejectInvitationHandler }) => {
+const InvitationDecisionButtons = ({ disabled, acceptInvitationHandler, id, rejectInvitationHandler }) => {
+
     return (
         <Box sx={{
             display:"flex"
@@ -12,7 +13,7 @@ const InvitationDecisionButtons = ({ disabled, acceptInvitationHandler, rejectIn
                 color:"white"
               }}
               disabled={disabled}
-              onClick={acceptInvitationHandler}
+              onClick={() => acceptInvitationHandler(id)}
             >
                 <CheckIcon />
             </IconButton>
@@ -21,7 +22,7 @@ const InvitationDecisionButtons = ({ disabled, acceptInvitationHandler, rejectIn
                 color:"white"
               }}
               disabled={disabled}
-              onClick={rejectInvitationHandler}
+              onClick={() => rejectInvitationHandler(id)}
             >
                 <ClearIcon />
             </IconButton>

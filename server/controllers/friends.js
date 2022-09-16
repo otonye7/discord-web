@@ -46,6 +46,59 @@ const postInvite = async (req, res) => {
 
 }
 
+const postAccept = async (req, res) => {
+    try {
+        const { id } = req.body
+        const invitation = await FriendInvitation.findById(id);
+        if(!invitation){
+            return res.status(401).send("Error occured. Please try again later")
+        }
+        const { senderId, receiverId } = invitation;
+
+        const senderUser = await User.findById(senderId);
+        senderUser.friend = [...senderUser.friend, receiverId];
+
+        const receiverUser = await User.findById(receiverId);
+        receiverUser.friend = [...receiverUser.friend, senderId];
+
+        await senderUser.save();
+        await receiverUser.save();
+
+        //delete invitation
+        await FriendInvitation.findByIdAndDelete(id);
+
+        //update friends if user is online
+
+
+        //update list of friends pending
+        friendsUpdate.updateFriendsPendingInvitation(receiverId.toString())
+        return res.status(200).send("Friend Added");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Something went wrong please try again later")
+    }
+}
+
+const postReject = async (req, res) => {
+    try {
+        const { id } = req.body;
+        const { userId } = req.user;
+        console.log(userId)
+        const invitationExists = await FriendInvitation.exists({ _id: id });
+        if(invitationExists){
+            await FriendInvitation.findByIdAndDelete(id)
+        }
+        //update pending invitation
+        friendsUpdate.updateFriendsPendingInvitation(userId);
+        return res.status(200).send("Request has been successfully deleted")
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send("Something went wrong please try again.")
+    }
+}
+
 module.exports = {
-    postInvite
+    postInvite,
+    postAccept,
+    postReject
 }

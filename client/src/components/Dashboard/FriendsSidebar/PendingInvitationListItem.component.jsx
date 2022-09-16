@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import {  useSelector } from "react-redux";
 import { Box, Tooltip, Typography } from "@mui/material";
 import Avatar from "../../Avatar/Avatar.component";
 import InvitationDecisionButtons from "./InvitationDecisionButtons.component";
@@ -11,15 +13,29 @@ const PendingInvitationListItem = ({
     rejectInvitation = () => {}
  }) => {
     const [buttonDisabled, setButtonDisabled] = useState(false);
+    const user = useSelector((state) => state.user.userDetails.token);
 
-    const handleAcceptFriendInvitation = () => {
-        acceptInvitation({ id })
-        setButtonDisabled(true)
+    const handleAcceptFriendInvitation = (id) => {
+        let res = axios.post(`http://localhost:7000/api/friend-invitation/accept`, {
+            id
+        }, {
+            headers: {
+                Authorization: `Bearer ${user}`
+            }
+        })
+        console.log(`${id} has been clicked`)
     }
 
-    const handleRejectFriendInvitation = () => {
-        rejectInvitation({ id })
-        setButtonDisabled(true)
+    const handleRejectFriendInvitation = (id) => {
+        let res = axios.post(`http://localhost:7000/api/friend-invitation/reject`, {
+            id
+        }, {
+            headers: {
+                Authorization: `Bearer ${user}`
+            }
+        })
+        window.location.reload();
+        console.log(`${id} has been rejected`)
     }
 
     return (
@@ -46,6 +62,7 @@ const PendingInvitationListItem = ({
                     </Typography>
                  <InvitationDecisionButtons 
                   buttonDisabled={buttonDisabled} 
+                  id={id}
                   acceptInvitationHandler={handleAcceptFriendInvitation}
                   rejectInvitationHandler={handleRejectFriendInvitation}
                 />
