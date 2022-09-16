@@ -2,7 +2,6 @@ import io from "socket.io-client";
 import storeRef from "../../index"
 import { pendingFriends } from "../../redux/friendsSlice";
 let socket = null;
-// console.log(storeRef)
  const connectWithSocketServer = (userDetails) => {
     const jwtToken = userDetails.userDetails.token
     socket = io("http://localhost:7000", {
@@ -17,8 +16,10 @@ let socket = null;
     })
 
     socket.on("friends-invitations", (data) => {
+        const { pendingInvitations } = data;
+        const pendingArray = pendingInvitations.map((friends) => friends)
         storeRef.dispatch(pendingFriends({
-            data: data
+            data: pendingArray
         }))
     })
 

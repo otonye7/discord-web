@@ -9,7 +9,7 @@ export const pendingFriendsSlice = createSlice({
     initialState: pendingFriendsState,
     reducers: {
         pendingFriends: (state, action) => {
-            state = state.push({ ...state, ...action.payload.data})
+            state = state.push(...state, ...action.payload.data)
         }
     }
 })

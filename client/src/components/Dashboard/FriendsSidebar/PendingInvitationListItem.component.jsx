@@ -5,7 +5,7 @@ import InvitationDecisionButtons from "./InvitationDecisionButtons.component";
 
 const PendingInvitationListItem = ({ 
     id,
-    userName,
+    username,
     mail,
     acceptInvitation = () => {},
     rejectInvitation = () => {}
@@ -33,7 +33,7 @@ const PendingInvitationListItem = ({
                     alignItems:"center",
                     justifyContent:"space-between"
                 }}>
-                    <Avatar userName={userName} />
+                    <Avatar userName={username} />
                     <Typography sx={{
                         marginLeft:"7px",
                         fontWeight: 700,
@@ -42,7 +42,7 @@ const PendingInvitationListItem = ({
                     }}
                      variant="subtitle1"
                     >
-                        {userName}
+                        {username}
                     </Typography>
                  <InvitationDecisionButtons 
                   buttonDisabled={buttonDisabled} 
