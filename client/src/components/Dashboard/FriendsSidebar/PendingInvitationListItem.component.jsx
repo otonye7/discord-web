@@ -15,19 +15,8 @@ const PendingInvitationListItem = ({
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const user = useSelector((state) => state.user.userDetails.token);
 
-    const handleAcceptFriendInvitation = (id) => {
-        let res = axios.post(`http://localhost:7000/api/friend-invitation/accept`, {
-            id
-        }, {
-            headers: {
-                Authorization: `Bearer ${user}`
-            }
-        })
-        console.log(`${id} has been clicked`)
-    }
-
-    const handleRejectFriendInvitation = (id) => {
-        let res = axios.post(`http://localhost:7000/api/friend-invitation/reject`, {
+    const handleAcceptFriendInvitation = async (id) => {
+        let res = await axios.post(`http://localhost:7000/api/friend-invitation/accept`, {
             id
         }, {
             headers: {
@@ -35,7 +24,17 @@ const PendingInvitationListItem = ({
             }
         })
         window.location.reload();
-        console.log(`${id} has been rejected`)
+    }
+
+    const handleRejectFriendInvitation = async (id) => {
+        let res = await axios.post(`http://localhost:7000/api/friend-invitation/reject`, {
+            id
+        }, {
+            headers: {
+                Authorization: `Bearer ${user}`
+            }
+        })
+        window.location.reload();
     }
 
     return (

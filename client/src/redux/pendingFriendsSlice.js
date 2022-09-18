@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let friendsState = [];
 let pendingFriendsState = [];
-let onlineUsers = [];
 
 export const pendingFriendsSlice = createSlice({
     name: "pendingFriends",
