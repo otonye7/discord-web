@@ -1,23 +1,6 @@
 import { styled } from "@mui/system"; 
 import FriendsListItem from "./FriendListItem.component";
-
-const DUMMY_FRIENDS = [
-    {
-        id: 1,
-        userName: "Mark",
-        isOnline: true
-    },
-    {
-        id: 2,
-        userName: "Julie",
-        isOnline: false
-    },
-    {
-        id: 3,
-        userName: "Peace",
-        isOnline: true
-    }
-]
+import {  useSelector } from "react-redux";
 
 const MainContainer = styled("div")({
     flexGrow: 1,
@@ -25,16 +8,16 @@ const MainContainer = styled("div")({
 })
 
 const FriendsList = () => {
+    const DUMMY_FRIENDS = useSelector((state) => state.friends)
     return (
         <MainContainer>
-            {DUMMY_FRIENDS.map((f) => (
+             {DUMMY_FRIENDS ? DUMMY_FRIENDS.map((f) => (
                 <FriendsListItem 
-                key={f.id} 
-                id={f.id}
-                userName={f.userName}
-                isOnline={f.isOnline}
+                  key={f.id}
+                  id={f.id}
+                  username={f.username}
                 />
-            ))}
+            )) : null } 
         </MainContainer>
     )
 }

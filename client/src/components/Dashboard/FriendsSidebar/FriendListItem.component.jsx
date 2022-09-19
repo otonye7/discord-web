@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import OnlineIndicator from "./OnlineIndicator.component";
 
-const FriendsListItem = ({ id, userName, isOnline }) => {
+const FriendsListItem = ({ id, username, isOnline }) => {
     return (
         <div>
             <Button style={{
@@ -17,13 +17,13 @@ const FriendsListItem = ({ id, userName, isOnline }) => {
                 color:"black",
                 position:"relative"
             }}>
-                <Avatar userName={userName} />
+                <Avatar userName={username} />
                 <Typography sx={{
                     marginLeft:"7px",
                     fontWeight: 700,
                     color:"#8e9297"
                 }} variant="subtitle1" align="left">
-                    {userName}
+                    {username}
                 </Typography>
                 {isOnline && <OnlineIndicator />}
             </Button>
