@@ -2,6 +2,7 @@ import io from "socket.io-client";
 import { store } from "../../index"
 import { pendingFriends } from "../../redux/pendingFriendsSlice";
 import { friends } from "../../redux/friendSlice";
+import { onlineUser } from "../../redux/onlineUserSlice";
 let socket = null;
  const connectWithSocketServer = (userDetails) => {
     const jwtToken = userDetails.userDetails.token
@@ -19,7 +20,6 @@ let socket = null;
     socket.on("friends-invitations", (data) => {
         const { pendingInvitations } = data;
         const pendingArray = pendingInvitations.map((friends) => friends)
-        console.log(pendingArray)
         store.dispatch(pendingFriends({
            data: pendingArray
         }))
@@ -28,10 +28,17 @@ let socket = null;
     socket.on("friends-list", (data) => {
         const { friend } = data;
         const friendsArray = friend.map((f) => f)
-        console.log(friendsArray)
         store.dispatch(friends({
           data: friendsArray
         }))
+    })
+
+    socket.on("online-users", (data) => {
+        const { onlineUsers } = data;
+        // const onlineUsersArray = onlineUsers.map((u) => u)
+        // store.dispatch(onlineUser({
+        //    data: onlineUsersArray
+        // }))
     })
 
 }

@@ -83,7 +83,6 @@ const postReject = async (req, res) => {
     try {
         const { id } = req.body;
         const { userId } = req.user;
-        console.log(userId)
         const invitationExists = await FriendInvitation.exists({ _id: id });
         if(invitationExists){
             await FriendInvitation.findByIdAndDelete(id)

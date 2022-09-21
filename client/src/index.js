@@ -7,16 +7,21 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./redux/userSlice";
 import pendingFriendsReducer from "./redux/pendingFriendsSlice";
 import friendsReducer from "./redux/friendSlice";
+import onlineUsersReducer from "./redux/onlineUserSlice";
+import chosenChatReducer from "./redux/chatSlice";
+import chatTypeReducer from "./redux/chatTypeSlice";
+
 
 export const store = configureStore({
   reducer: {
     user: userReducer,
+    chat: chosenChatReducer,
+    chatType: chatTypeReducer,
     pendingFriends: pendingFriendsReducer,
-    friends: friendsReducer
+    friends: friendsReducer,
+    onlineUser: onlineUsersReducer
   }
 })
-
-// let storeRef = store;
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
