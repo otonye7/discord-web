@@ -8,7 +8,7 @@ export const chatTypeSlice = createSlice({
     reducers: {
         chatType: (state, action) => {
             state = action.payload;
-            console.log(state)
+            return state
         }
     }
 })

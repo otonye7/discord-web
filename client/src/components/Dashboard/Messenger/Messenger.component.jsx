@@ -1,4 +1,7 @@
 import { styled } from "@mui/system";
+import {  useSelector } from "react-redux";
+import WelcomeMessage from "./WelcomeMessage.component";
+import MessengerContent from "./MessengerContent.component";
 
 const MainContainer = styled("div")({
     flexGrow: 1,
@@ -8,8 +11,11 @@ const MainContainer = styled("div")({
 })
 
 const Messenger = () => {
+    const chosenName = useSelector((state) => state.chat)
     return (
-        <MainContainer></MainContainer>
+        <MainContainer>
+            {!chosenName ? (<WelcomeMessage />) : <MessengerContent chosenName={chosenName} /> }
+        </MainContainer>
     )
 }
 export default Messenger
