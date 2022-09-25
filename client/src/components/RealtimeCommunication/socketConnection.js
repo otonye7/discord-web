@@ -40,6 +40,11 @@ let socket = null;
         //    data: onlineUsersArray
         // }))
     })
-
 }
-export default connectWithSocketServer
+
+export default connectWithSocketServer;
+
+export const sendDirectMessage = (data) => {
+    console.log(data)
+    socket.emit("direct-message", data)
+}
