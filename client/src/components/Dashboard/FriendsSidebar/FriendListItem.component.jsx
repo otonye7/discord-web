@@ -32,7 +32,7 @@ const FriendsListItem = ({ id, username, isOnline }) => {
                 color:"black",
                 position:"relative"
             }}>
-                <Avatar userName={username} />
+                <Avatar username={username} />
                 <Typography sx={{
                     marginLeft:"7px",
                     fontWeight: 700,

@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 
 const MainContainer = styled("div")({
     width: "98%",
+    backgroundColor: "#36393f",
     display: "column",
     marginTop: "10px"
 })
@@ -11,7 +12,7 @@ const MainContainer = styled("div")({
 const MessageHeader = ({ name }) => {
     return (
         <MainContainer>
-            <Avatar large userName={name} />
+            <Avatar large username={name} />
             <Typography variant="h4" sx={{
                 fontWeight: "bold",
                 color: "white",
