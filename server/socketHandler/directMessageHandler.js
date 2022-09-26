@@ -21,6 +21,7 @@ const directMessageHandler = async (socket, data) => {
             conversation.messages.push(message._id);
             await conversation.save();
             //update to sender and receiver if he is online
+            chatUpdates.updateChatHistory(conversation._id.toString());
         } else {
             //create new if not exist
             const newConversation = await Conversation.create({
@@ -28,6 +29,7 @@ const directMessageHandler = async (socket, data) => {
                 participants: [userId, receiverUserId]
             })
             //update to sender and receiver if online
+            chatUpdates.updateChatHistory(conversation._id.toString());
         }
 
     } catch (err) {
@@ -35,4 +37,4 @@ const directMessageHandler = async (socket, data) => {
     }
 }
 
-module.exports =  directMessageHandler
+module.exports = directMessageHandler
