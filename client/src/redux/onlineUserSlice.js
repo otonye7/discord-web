@@ -7,8 +7,7 @@ export const onlineUsersSlice = createSlice({
     initialState: onlineUsersState,
     reducers: {
         onlineUser: (state, action) => {
-            state = state.push(...action.payload.data)
-            console.log(state)
+            state = state.push(action.payload)
         }
     }
 })

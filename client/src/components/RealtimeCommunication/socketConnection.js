@@ -35,16 +35,23 @@ let socket = null;
 
     socket.on("online-users", (data) => {
         const { onlineUsers } = data;
-        // const onlineUsersArray = onlineUsers.map((u) => u)
-        // store.dispatch(onlineUser({
-        //    data: onlineUsersArray
-        // }))
+        const onlineUsersArray = onlineUsers.map((u) => u)
+        store.dispatch(onlineUser({
+           data: onlineUsersArray
+        }))
+    })
+    socket.on("direct-chat-history", (data) => {
+        console.log("direct chat history came in")
+        console.log(data)
     })
 }
 
 export default connectWithSocketServer;
 
 export const sendDirectMessage = (data) => {
-    console.log(data)
     socket.emit("direct-message", data)
+}
+
+export const getDirectChatHistory = (data) => {
+    socket.emit("direct-chat-history", data)
 }
