@@ -30,7 +30,7 @@ const directMessageHandler = async (socket, data) => {
                 participants: [userId, receiverUserId]
             })
             //update to sender and receiver if online
-            chatUpdates.updateChatHistory(conversation._id.toString());
+            chatUpdates.updateChatHistory(newConversation._id.toString());
         }
 
     } catch (err) {

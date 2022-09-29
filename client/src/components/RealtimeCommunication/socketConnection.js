@@ -3,6 +3,8 @@ import { store } from "../../index"
 import { pendingFriends } from "../../redux/pendingFriendsSlice";
 import { friends } from "../../redux/friendSlice";
 import { onlineUser } from "../../redux/onlineUserSlice";
+import { updateDirectChatHistoryIfActive } from "../shared/chat";
+
 let socket = null;
  const connectWithSocketServer = (userDetails) => {
     const jwtToken = userDetails.userDetails.token
@@ -40,9 +42,9 @@ let socket = null;
            data: onlineUsersArray
         }))
     })
+    
     socket.on("direct-chat-history", (data) => {
-        console.log("direct chat history came in")
-        console.log(data)
+        updateDirectChatHistoryIfActive(data)
     })
 }
 
