@@ -10,12 +10,12 @@ const registerSocketServer = (server) => {
             origin: "*",
             methods: ["GET", "POST"]
         }
-    });
+    })
     serverStore.setSocketServerInstance(io)
 
     io.use((socket, next) => {
        authSocket(socket, next)
-    });
+    })
 
     const emitOnlineUsers = () => {
         const onlineUsers = serverStore.getOnlineUsers();
@@ -24,7 +24,6 @@ const registerSocketServer = (server) => {
 
     io.on("connection", (socket) => {
         console.log(socket.id)
-
         newConnectionHandler(socket, io);
         emitOnlineUsers();
 

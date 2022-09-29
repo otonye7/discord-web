@@ -27,14 +27,13 @@ const FriendsList = () => {
     // console.log(checkOnlineUsers(DUMMY_FRIENDS, onLineUsers))
     return (
         <MainContainer>
-             {DUMMY_FRIENDS ? DUMMY_FRIENDS.map((f) => (
+             {DUMMY_FRIENDS.map((f, index) => (
                 <FriendsListItem 
-                  key={f.id}
-                  id={f.id}
+                  key={index}
                   username={f.username}
-                  isOnline={f.isOnline}
+                  id={f.id}
                 />
-            )) : null } 
+            )) } 
         </MainContainer>
     )
 }

@@ -10,6 +10,7 @@ import friendsReducer from "./redux/friendSlice";
 import onlineUsersReducer from "./redux/onlineUserSlice";
 import chosenChatReducer from "./redux/chatSlice";
 import chatTypeReducer from "./redux/chatTypeSlice";
+import MessageReducer from "./redux/messageSlice";
 
 
 export const store = configureStore({
@@ -19,7 +20,8 @@ export const store = configureStore({
     chatType: chatTypeReducer,
     pendingFriends: pendingFriendsReducer,
     friends: friendsReducer,
-    onlineUser: onlineUsersReducer
+    onlineUser: onlineUsersReducer,
+    message: MessageReducer
   }
 })
 

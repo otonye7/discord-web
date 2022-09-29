@@ -55,5 +55,6 @@ export const sendDirectMessage = (data) => {
 }
 
 export const getDirectChatHistory = (data) => {
+    // console.log(data)
     socket.emit("direct-chat-history", data)
 }

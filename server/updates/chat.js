@@ -23,7 +23,6 @@ const updateChatHistory = async (conversationId, toSpecifiedSocketId = null) => 
         //else check if online and emit events
         conversation.participants.forEach((userId) => {
             const activeConnections = serverStore.getActiveConnections(userId.toString())
-            console.log(activeConnections)
             activeConnections.forEach((socketId) => {
                 io.to(socketId).emit("direct-chat-history", {
                     messages: conversation.messages,

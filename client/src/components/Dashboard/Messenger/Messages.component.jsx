@@ -56,7 +56,7 @@ const MainContainer = styled("div")({
 
 const Messages = () => {
     const chosenName = useSelector((state) => state.chat);
-    // const messages = useSelector((state) => state.message)
+    const messages = useSelector((state) => console.log(state))
     return (
         <MainContainer>
             <MessageHeader name={chosenName?.username} />
